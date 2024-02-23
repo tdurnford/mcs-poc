@@ -110,6 +110,7 @@ export const SideNav = () => {
 
         return (
           <Link
+            key={path}
             className={mergeClasses(classes.link, isActive && "active")}
             to={{
               pathname: generatePath(path, {

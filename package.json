@@ -2,6 +2,7 @@
   "name": "mcs",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tdurnford.github.io/mcs-poc",
   "dependencies": {
     "@fluentui/react-components": "^9.46.5",
     "@fluentui/react-icons": "^2.0.228",

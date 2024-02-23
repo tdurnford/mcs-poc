@@ -23,9 +23,6 @@ export const AppRouter = () => {
       <Switch>
         {pages.map(({ title, route, component: Component, exact }) => {
           const resolvedLayouts = layouts.filter((layout) => {
-            if (Array.isArray(route)) {
-              return route.some((r) => r.startsWith(layout.route));
-            }
             return route.startsWith(layout.route);
           });
 
@@ -42,7 +39,7 @@ export const AppRouter = () => {
           }
 
           return (
-            <Route path={route} exact={exact}>
+            <Route key={route} path={route} exact={exact}>
               {resolvedLayouts.reduce(
                 (acc, layout) => {
                   const { component: Layout } = layout;

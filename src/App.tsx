@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 
 import AppRouter from "./components/AppRouter";
@@ -57,11 +57,11 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <FluentProvider style={style} theme={webLightTheme}>
         <AppRouter />
       </FluentProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

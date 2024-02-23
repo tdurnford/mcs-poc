@@ -35,7 +35,7 @@ export type Page = {
       /**
        * The route for the page
        */
-      route: EnvironmentPath | EnvironmentPath[];
+      route: EnvironmentPath;
     }
   | {
       /**
@@ -45,7 +45,7 @@ export type Page = {
       /**
        * The route for the page
        */
-      route: CopilotPath | CopilotPath[];
+      route: CopilotPath;
     }
 );
 
