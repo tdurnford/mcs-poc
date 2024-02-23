@@ -1,8 +1,9 @@
+import { lazy } from "react";
 import { Home20Filled, Home20Regular, bundleIcon } from "@fluentui/react-icons";
 
 import { createPageRegisterFn } from "../../hooks/usePages";
 
-import Home from "./Home";
+const Home = lazy(() => import("./Home"));
 
 const HomeIcon = bundleIcon(Home20Filled, Home20Regular);
 

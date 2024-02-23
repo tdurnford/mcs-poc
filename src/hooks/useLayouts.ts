@@ -8,6 +8,7 @@ import { createExternalStore } from "../utils/externalStore";
 export type Layout = {
   route: string;
   component: ComponentType<PropsWithChildren>;
+  omitRoutes?: string[];
 };
 
 const store = createExternalStore([] as Layout[]);

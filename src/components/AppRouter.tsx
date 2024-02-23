@@ -5,6 +5,7 @@ import { usePages } from "../hooks/usePages";
 import { makeStyles } from "@fluentui/react-components";
 import { useLayouts } from "../hooks/useLayouts";
 import { useCopilot } from "../hooks/useCopilot";
+import { Suspense } from "react";
 
 const useStyles = makeStyles({
   container: {
@@ -23,7 +24,10 @@ export const AppRouter = () => {
       <Switch>
         {pages.map(({ title, route, component: Component, exact }) => {
           const resolvedLayouts = layouts.filter((layout) => {
-            return route.startsWith(layout.route);
+            return (
+              route.startsWith(layout.route) &&
+              !layout.omitRoutes?.some((omit) => route.startsWith(omit))
+            );
           });
 
           const helmet = (
@@ -47,7 +51,9 @@ export const AppRouter = () => {
                 },
                 <>
                   {helmet}
-                  <Component />
+                  <Suspense fallback={null}>
+                    <Component />
+                  </Suspense>
                 </>
               )}
             </Route>

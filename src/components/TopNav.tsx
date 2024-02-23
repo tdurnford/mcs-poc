@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const HeaderNav = memo(() => {
+export const TopNav = memo(() => {
   const classes = useStyles();
   const copilotId = useCopilotId();
   const environmentId = useEnvironmentId();

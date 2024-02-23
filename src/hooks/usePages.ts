@@ -15,13 +15,25 @@ export type Page = {
    */
   component: ComponentType | null;
   /**
-   * Determines if the page should be hidden from the navigation
+   * Determines if the page should be hidden from the navigation menus
    */
   hidden?: boolean;
+  /**
+   * Determines if the page should be disabled
+   */
+  disabled?: boolean;
   /**
    * Determines if the route should be an exact match
    */
   exact?: boolean;
+  /**
+   * Feature flag to determine if the page should be enabled
+   */
+  featureFlag?: string;
+  /**
+   * The minimum solution version required to view the page
+   */
+  minimumSolutionVersion?: string;
 } & (
   | {
       /**

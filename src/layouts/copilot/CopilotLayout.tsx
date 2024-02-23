@@ -1,6 +1,6 @@
 import { makeStyles } from "@fluentui/react-components";
 import { type PropsWithChildren } from "react";
-import { HeaderNav } from "../../components/HeaderNav";
+import { TopNav } from "../../components/TopNav";
 
 const useStyles = makeStyles({
   container: {
@@ -14,7 +14,7 @@ const CopilotLayout = ({ children }: PropsWithChildren) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <HeaderNav />
+      <TopNav />
       {children}
     </div>
   );

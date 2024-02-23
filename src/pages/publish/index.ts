@@ -1,6 +1,7 @@
+import { lazy } from "react";
 import { createPageRegisterFn } from "../../hooks/usePages";
 
-import Publish from "./Publish";
+const Publish = lazy(() => import("./Publish"));
 
 export const registerPublishPage = createPageRegisterFn({
   title: "Publish",

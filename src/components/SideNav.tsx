@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     rowGap: "8px",
   },
   icon: {
-    "--_size": "36px",
+    "--_size": "28px",
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
     alignItems: "center",
     backgroundColor: tokens.colorNeutralBackground3,
@@ -110,6 +110,7 @@ export const SideNav = () => {
 
         return (
           <Link
+            title={title}
             key={path}
             className={mergeClasses(classes.link, isActive && "active")}
             to={{

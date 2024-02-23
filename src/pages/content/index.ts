@@ -1,6 +1,7 @@
+import { lazy } from "react";
 import { createPageRegisterFn } from "../../hooks/usePages";
 
-import Content from "./Content";
+const Content = lazy(() => import("./Content"));
 
 export const registerContentPage = createPageRegisterFn({
   title: "Content",
