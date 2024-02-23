@@ -1,8 +1,8 @@
-import { type ComponentType, useSyncExternalStore } from "react";
+import { type ComponentType, useSyncExternalStore, useMemo } from "react";
 import { createExternalStore } from "../utils/externalStore";
 import { FluentIcon } from "@fluentui/react-icons";
 
-type CopilotPath = `/environments/:environmentId/copilots/:copilotId${string}`;
+type CopilotPath = `/environments/:environmentId/bots/:cdsBotId${string}`;
 type EnvironmentPath = `/environments/:environmentId${string}`;
 
 export type Page = {
@@ -90,16 +90,18 @@ export function usePages(): readonly [Page[]];
 export function usePages<T extends Page>(filter?: (page: Page) => page is T) {
   const pages = useSyncExternalStore(store.subscribe, store.getSnapshot);
 
-  if (filter) {
-    return [pages.filter(filter)] as const;
-  }
-  return [pages] as const;
+  return useMemo(() => {
+    if (filter) {
+      return [pages.filter(filter)] as const;
+    }
+    return [pages] as const;
+  }, [filter, pages]);
 }
 
 export const useAppPages = () => {
   return usePages(isAppPage);
 };
 
-export const useCopilotPages = () => {
+export const useBotPages = () => {
   return usePages(isCopilotPage);
 };

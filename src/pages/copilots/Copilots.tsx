@@ -4,7 +4,7 @@ import {
   matchPath,
   useLocation,
 } from "react-router-dom";
-import { useCopilots } from "../../hooks/useCopilots";
+import { useBots } from "../../hooks/useBots";
 import { useEnvironmentId } from "../../hooks/useEnvironmentId";
 
 const isFrom = (state: unknown): state is { from: string } =>
@@ -13,26 +13,23 @@ const isFrom = (state: unknown): state is { from: string } =>
 const Copilots = () => {
   const environmentId = useEnvironmentId();
   const { state } = useLocation();
-  const [firstCopilot] = useCopilots();
+  const [firstCopilot] = useBots();
 
-  const match = matchPath<{ copilotId: string }>(
-    isFrom(state) ? state.from : "",
-    {
-      path: "/environments/:environmentId/copilots/:copilotId",
-      exact: false,
-    }
-  );
+  const match = matchPath<{ botId: string }>(isFrom(state) ? state.from : "", {
+    path: "/environments/:environmentId/bots/:cdsBotId",
+    exact: false,
+  });
 
-  const previousCopilotId = match?.params.copilotId;
+  const previousCopilotId = match?.params.botId;
 
   if (previousCopilotId || firstCopilot) {
     return (
       <Redirect
         to={generatePath(
-          "/environments/:environmentId/copilots/:copilotId/overview",
+          "/environments/:environmentId/bots/:cdsBotId/overview",
           {
             environmentId,
-            copilotId: previousCopilotId || firstCopilot.id,
+            cdsBotId: previousCopilotId || firstCopilot.cdsBotId,
           }
         )}
       />

@@ -9,7 +9,7 @@ const BotIcon = bundleIcon(Bot20Filled, Bot20Regular);
 
 export const registerCopilotPage = createPageRegisterFn({
   title: "Copilot",
-  route: "/environments/:environmentId/copilots",
+  route: "/environments/:environmentId/bots",
   level: "app",
   icon: BotIcon,
   component: Copilots,

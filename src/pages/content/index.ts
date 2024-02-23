@@ -5,7 +5,7 @@ const Content = lazy(() => import("./Content"));
 
 export const registerContentPage = createPageRegisterFn({
   title: "Content",
-  route: "/environments/:environmentId/copilots/:copilotId/content",
+  route: "/environments/:environmentId/bots/:cdsBotId/content",
   level: "copilot",
   component: Content,
 });

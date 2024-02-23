@@ -5,7 +5,7 @@ const Analytics = lazy(() => import("./Analytics"));
 
 export const registerAnalyticsPage = createPageRegisterFn({
   title: "Analytics",
-  route: "/environments/:environmentId/copilots/:copilotId/analytics",
+  route: "/environments/:environmentId/bots/:cdsBotId/analytics",
   level: "copilot",
   component: Analytics,
 });

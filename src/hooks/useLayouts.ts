@@ -6,8 +6,17 @@ import {
 import { createExternalStore } from "../utils/externalStore";
 
 export type Layout = {
+  /**
+   * Route to apply the layout to
+   */
   route: string;
+  /**
+   * The component to render for the layout
+   */
   component: ComponentType<PropsWithChildren>;
+  /**
+   * Removes the layout from the provided routes
+   */
   omitRoutes?: string[];
 };
 

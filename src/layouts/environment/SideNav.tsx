@@ -5,8 +5,8 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { Link, generatePath, matchPath, useLocation } from "react-router-dom";
-import { useAppPages } from "../hooks/usePages";
-import { useEnvironmentId } from "../hooks/useEnvironmentId";
+import { useAppPages } from "../../hooks/usePages";
+import { useEnvironmentId } from "../../hooks/useEnvironmentId";
 import {
   iconFilledClassName,
   iconRegularClassName,

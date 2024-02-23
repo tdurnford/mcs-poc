@@ -4,13 +4,18 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import { type PropsWithChildren } from "react";
+import { memo, type PropsWithChildren } from "react";
 
 const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
     height: "100%",
+  },
+  content: {
+    flexGrow: 1,
+    overflowX: "hidden",
+    overflowY: "hidden",
   },
   header: {
     ...shorthands.padding("12px", "24px"),
@@ -19,16 +24,18 @@ const useStyles = makeStyles({
   },
 });
 
-const AppLayout = ({ children }: PropsWithChildren) => {
+const AppLayout = memo(({ children }: PropsWithChildren<{}>) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
       <header className={classes.header}>
         <Subtitle2>Studio</Subtitle2>
       </header>
-      {children}
+      <div className={classes.content}>{children}</div>
     </div>
   );
-};
+});
+
+AppLayout.displayName = "AppLayout";
 
 export default AppLayout;

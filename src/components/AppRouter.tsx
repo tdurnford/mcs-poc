@@ -1,10 +1,17 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { memo } from "react";
+import {
+  Redirect,
+  Route,
+  Switch,
+  matchPath,
+  useLocation,
+} from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { usePages } from "../hooks/usePages";
 import { makeStyles } from "@fluentui/react-components";
 import { useLayouts } from "../hooks/useLayouts";
-import { useCopilot } from "../hooks/useCopilot";
+import { useBot } from "../hooks/useBot";
 import { Suspense } from "react";
 
 const useStyles = makeStyles({
@@ -13,27 +20,27 @@ const useStyles = makeStyles({
   },
 });
 
-export const AppRouter = () => {
+export const AppRouter = memo(() => {
   const classes = useStyles();
-  const copilot = useCopilot(true);
+  const bot = useBot(true);
+  const { pathname } = useLocation();
   const [pages] = usePages();
   const [layouts] = useLayouts();
 
-  return (
+  const resolvedLayouts = layouts.filter((layout) => {
+    return matchPath(pathname, {
+      path: layout.route,
+    });
+  });
+
+  const content = (
     <div className={classes.container}>
       <Switch>
         {pages.map(({ title, route, component: Component, exact }) => {
-          const resolvedLayouts = layouts.filter((layout) => {
-            return (
-              route.startsWith(layout.route) &&
-              !layout.omitRoutes?.some((omit) => route.startsWith(omit))
-            );
-          });
-
           const helmet = (
             <Helmet>
               <title>
-                {title} - {copilot ? `${copilot.displayName} -` : ""} Studio
+                {title} - {bot ? `${bot.displayName} -` : ""} Studio
               </title>
             </Helmet>
           );
@@ -43,19 +50,13 @@ export const AppRouter = () => {
           }
 
           return (
-            <Route key={route} path={route} exact={exact}>
-              {resolvedLayouts.reduce(
-                (acc, layout) => {
-                  const { component: Layout } = layout;
-                  return <Layout>{acc}</Layout>;
-                },
-                <>
-                  {helmet}
-                  <Suspense fallback={null}>
-                    <Component />
-                  </Suspense>
-                </>
-              )}
+            <Route exact={exact} key={route} path={route}>
+              <>
+                {helmet}
+                <Suspense fallback={null}>
+                  <Component />
+                </Suspense>
+              </>
             </Route>
           );
         })}
@@ -63,5 +64,13 @@ export const AppRouter = () => {
       </Switch>
     </div>
   );
-};
+
+  return resolvedLayouts.reduce((acc, layout) => {
+    const { component: Layout } = layout;
+    return <Layout>{acc}</Layout>;
+  }, content);
+});
+
+AppRouter.displayName = "AppRouter";
+
 export default AppRouter;

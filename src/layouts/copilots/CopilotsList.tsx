@@ -7,20 +7,22 @@ import {
 } from "@fluentui/react-components";
 import { Link, generatePath } from "react-router-dom";
 import { useEnvironmentId } from "../../hooks/useEnvironmentId";
-import { useCopilotId } from "../../hooks/useCopilotId";
-import { useCopilots } from "../../hooks/useCopilots";
+import { useBotId } from "../../hooks/useBotId";
+import { useBots } from "../../hooks/useBots";
 
 const useStyles = makeStyles({
   container: {
+    "--_header-height": "64px",
     ...shorthands.borderRight("1px", "solid", tokens.colorNeutralStroke1),
     backgroundColor: tokens.colorNeutralBackground2,
+    width: "240px",
   },
   header: {
     ...shorthands.borderBottom("1px", "solid", tokens.colorNeutralStroke1),
     ...shorthands.padding("12px"),
     alignItems: "center",
     display: "flex",
-    height: "36px",
+    height: "var(--_header-height)",
   },
   item: {
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
@@ -54,13 +56,15 @@ const useStyles = makeStyles({
     textDecorationLine: "none",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
-    width: "180px",
+    width: "100%",
   },
   list: {
     ...shorthands.padding("12px"),
     display: "flex",
     flexDirection: "column",
     height: "100%",
+    maxHeight: "calc(100vh - var(--_header-height))",
+    overflowY: "auto",
     rowGap: "4px",
 
     "& > li": {
@@ -71,8 +75,8 @@ const useStyles = makeStyles({
 
 const CopilotsList = () => {
   const classes = useStyles();
-  const copilotId = useCopilotId(true);
-  const copilots = useCopilots();
+  const botId = useBotId(true);
+  const copilots = useBots();
   const environmentId = useEnvironmentId();
 
   return (
@@ -82,16 +86,16 @@ const CopilotsList = () => {
       </div>
       <div className={classes.list}>
         {copilots.map((copilot) => {
-          const isActive = copilotId === copilot.id;
+          const isActive = botId === copilot.cdsBotId;
 
           return (
             <Link
-              key={copilot.id}
+              key={copilot.cdsBotId}
               to={generatePath(
-                "/environments/:environmentId/copilots/:copilotId/overview",
+                "/environments/:environmentId/bots/:cdsBotId/overview",
                 {
                   environmentId,
-                  copilotId: copilot.id,
+                  cdsBotId: copilot.cdsBotId,
                 }
               )}
               className={mergeClasses(classes.link, isActive && "active")}

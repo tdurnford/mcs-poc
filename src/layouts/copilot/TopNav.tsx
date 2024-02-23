@@ -15,20 +15,23 @@ import {
   Subtitle1,
 } from "@fluentui/react-components";
 
-import { useCopilotPages } from "../hooks/usePages";
-import { useCopilotId } from "../hooks/useCopilotId";
-import { useEnvironmentId } from "../hooks/useEnvironmentId";
-import { useCopilot } from "../hooks/useCopilot";
+import { useBotPages } from "../../hooks/usePages";
+import { useBotId } from "../../hooks/useBotId";
+import { useEnvironmentId } from "../../hooks/useEnvironmentId";
+import { useBot } from "../../hooks/useBot";
 
 const isString = (value: unknown): value is string => typeof value === "string";
 
 const useStyles = makeStyles({
   container: {
+    "--_height": "64px",
     ...shorthands.borderBottom("1px", "solid", tokens.colorNeutralStroke1),
     ...shorthands.padding("8px", "20px"),
     alignItems: "center",
     columnGap: "12px",
     display: "flex",
+    height: "var(--_height)",
+    minHeight: "var(--_height)",
   },
   icon: {
     "--_size": "36px",
@@ -40,23 +43,16 @@ const useStyles = makeStyles({
 });
 
 export const TopNav = memo(() => {
+  const cdsBotId = useBotId();
   const classes = useStyles();
-  const copilotId = useCopilotId();
   const environmentId = useEnvironmentId();
   const history = useHistory();
-  const { displayName } = useCopilot();
+  const { displayName } = useBot();
   const { pathname } = useLocation();
-  const [pages] = useCopilotPages();
+  const [pages] = useBotPages();
 
   const selectedValue = pages.reduce<string | undefined>((current, page) => {
-    if (Array.isArray(page.route)) {
-      const match = page.route.some((route) =>
-        matchPath(pathname, { path: route, exact: page.exact })
-      );
-      if (match) {
-        return page.route[0];
-      }
-    } else if (matchPath(pathname, { path: page.route, exact: page.exact })) {
+    if (matchPath(pathname, { path: page.route, exact: page.exact })) {
       return page.route;
     }
     return current;
@@ -64,16 +60,11 @@ export const TopNav = memo(() => {
 
   const handleTabSelect = useCallback<NonNullable<TabListProps["onTabSelect"]>>(
     (_, { value }) => {
-      if (Array.isArray(value)) {
-        const [first] = value;
-        if (isString(first)) {
-          history.push(generatePath(first, { copilotId, environmentId }));
-        }
-      } else if (isString(value)) {
-        history.push(generatePath(value, { copilotId, environmentId }));
+      if (isString(value)) {
+        history.push(generatePath(value, { cdsBotId, environmentId }));
       }
     },
-    [copilotId, environmentId, history]
+    [cdsBotId, environmentId, history]
   );
 
   return (

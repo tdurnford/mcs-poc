@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CopilotsLayout = ({ children }: PropsWithChildren) => {
+const CopilotsLayout = ({ children }: PropsWithChildren<{}>) => {
   const classes = useStyles();
 
   return (

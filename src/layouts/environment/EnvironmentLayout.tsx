@@ -1,6 +1,6 @@
 import { makeStyles } from "@fluentui/react-components";
 import { type PropsWithChildren } from "react";
-import { SideNav } from "../../components/SideNav";
+import { SideNav } from "./SideNav";
 
 const useStyles = makeStyles({
   container: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const EnvironmentLayout = ({ children }: PropsWithChildren) => {
+const EnvironmentLayout = ({ children }: PropsWithChildren<{}>) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>

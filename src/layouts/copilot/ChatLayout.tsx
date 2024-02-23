@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ChatLayout = ({ children }: PropsWithChildren) => {
+const ChatLayout = ({ children }: PropsWithChildren<{}>) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>

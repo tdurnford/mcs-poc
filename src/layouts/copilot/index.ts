@@ -4,12 +4,12 @@ import CopilotLayout from "./CopilotLayout";
 import ChatLayout from "./ChatLayout";
 
 export const registerCopilotLayout = createRegisterLayoutFn({
-  route: "/environments/:environmentId/copilots/:copilotId",
-  omitRoutes: ["/environments/:environmentId/copilots/:copilotId/adaptive"],
+  route: "/environments/:environmentId/bots/:cdsBotId",
+  omitRoutes: ["/environments/:environmentId/bots/:cdsBotId/adaptive"],
   component: CopilotLayout,
 });
 
 export const registerChatLayout = createRegisterLayoutFn({
-  route: "/environments/:environmentId/copilots/:copilotId",
+  route: "/environments/:environmentId/bots/:cdsBotId",
   component: ChatLayout,
 });
