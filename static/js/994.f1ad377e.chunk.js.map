@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/994.f1ad377e.chunk.js","mappings":"mIAAA,MAIA,EAJgBA,KACPC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,W","sources":["pages/content/Content.tsx"],"sourcesContent":["const Content = () => {\n  return <div>Content</div>;\n};\n\nexport default Content;\n"],"names":["Content","_jsx","children"],"sourceRoot":""}

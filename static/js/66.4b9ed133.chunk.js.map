@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/66.4b9ed133.chunk.js","mappings":"iIAAA,MAIA,EAJiBA,KACRC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,Y","sources":["pages/overview/Overview.tsx"],"sourcesContent":["const Overview = () => {\n  return <div>Overview</div>;\n};\n\nexport default Overview;\n"],"names":["Overview","_jsx","children"],"sourceRoot":""}

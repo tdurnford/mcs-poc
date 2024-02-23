@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/610.33845e2d.chunk.js","mappings":"mIAAA,MAIA,EAJgBA,KACPC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,W","sources":["pages/publish/Publish.tsx"],"sourcesContent":["const Publish = () => {\n  return <div>Publish</div>;\n};\n\nexport default Publish;\n"],"names":["Publish","_jsx","children"],"sourceRoot":""}
