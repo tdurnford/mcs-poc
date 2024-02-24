@@ -21,8 +21,8 @@ const useStyles = makeStyles({
 });
 
 export const AppRouter = memo(() => {
-  const classes = useStyles();
   const bot = useBot(true);
+  const classes = useStyles();
   const { pathname } = useLocation();
   const [pages] = usePages();
   const [layouts] = useLayouts();
@@ -40,7 +40,7 @@ export const AppRouter = memo(() => {
           const helmet = (
             <Helmet>
               <title>
-                {title} - {bot ? `${bot.displayName} -` : ""} Studio
+                {title} - {bot ? `${bot.displayName} |` : ""} Studio
               </title>
             </Helmet>
           );

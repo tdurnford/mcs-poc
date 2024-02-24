@@ -121,7 +121,7 @@ export const SideNav = () => {
             }}
           >
             <div className={mergeClasses(classes.icon, isActive && "active")}>
-              <Icon />
+              {Icon ? <Icon /> : null}
             </div>
             {title}
           </Link>

@@ -19,7 +19,7 @@ export type Page = {
    */
   hidden?: boolean;
   /**
-   * Determines if the page should be disabled
+   * Determines if the page and navigation menu item should be disabled
    */
   disabled?: boolean;
   /**
@@ -43,7 +43,7 @@ export type Page = {
       /**
        * The icon to display in the navigation
        */
-      icon: FluentIcon;
+      icon: FluentIcon | null;
       /**
        * The route for the page
        */

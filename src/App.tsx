@@ -21,8 +21,8 @@ import "./App.css";
 const style = { height: "100dvh" };
 
 // Register layouts
-registerChatLayout();
 registerCopilotLayout();
+registerChatLayout();
 registerCopilotsLayout();
 registerEnvironmentLayout();
 registerAppLayout();
