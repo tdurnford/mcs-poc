@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 export const BotValidator = memo(({ children }: PropsWithChildren<{}>) => {
   const cdsBotId = useBotId();
   const classes = useStyles();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Set is loading to true for 3 seconds when the bot id changes to simulate a loading state
   useEffect(() => {

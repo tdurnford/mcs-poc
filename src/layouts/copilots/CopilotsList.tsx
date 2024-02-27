@@ -62,8 +62,6 @@ const useStyles = makeStyles({
     ...shorthands.padding("12px"),
     display: "flex",
     flexDirection: "column",
-    height: "100%",
-    maxHeight: "calc(100vh - var(--_header-height))",
     overflowY: "auto",
     rowGap: "4px",
 

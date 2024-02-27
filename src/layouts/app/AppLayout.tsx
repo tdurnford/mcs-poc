@@ -8,12 +8,11 @@ import { memo, type PropsWithChildren } from "react";
 
 const useStyles = makeStyles({
   container: {
-    display: "flex",
-    flexDirection: "column",
+    display: "grid",
+    gridTemplateRows: "min-content 1fr",
     height: "100%",
   },
   content: {
-    flexGrow: 1,
     overflowX: "hidden",
     overflowY: "hidden",
   },

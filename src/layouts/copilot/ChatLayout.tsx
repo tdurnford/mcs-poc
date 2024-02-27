@@ -1,5 +1,6 @@
 import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 import { type PropsWithChildren } from "react";
+import { BotValidator } from "../../components/BotValidator";
 
 const useStyles = makeStyles({
   container: {
@@ -20,10 +21,12 @@ const useStyles = makeStyles({
 const ChatLayout = ({ children }: PropsWithChildren<{}>) => {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>{children}</div>
-      <div className={classes.test}></div>
-    </div>
+    <BotValidator>
+      <div className={classes.container}>
+        <div className={classes.content}>{children}</div>
+        <div className={classes.test}></div>
+      </div>
+    </BotValidator>
   );
 };
 

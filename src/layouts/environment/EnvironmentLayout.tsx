@@ -4,11 +4,9 @@ import { SideNav } from "./SideNav";
 
 const useStyles = makeStyles({
   container: {
-    display: "flex",
+    display: "grid",
+    gridTemplateColumns: "min-content 1fr",
     height: "100%",
-  },
-  content: {
-    flexGrow: 1,
   },
 });
 
@@ -17,7 +15,7 @@ const EnvironmentLayout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <div className={classes.container}>
       <SideNav />
-      <div className={classes.content}>{children}</div>
+      <div>{children}</div>
     </div>
   );
 };

@@ -4,12 +4,9 @@ import CopilotsList from "./CopilotsList";
 
 const useStyles = makeStyles({
   container: {
-    display: "flex",
-    flexGrow: 1,
+    display: "grid",
+    gridTemplateColumns: "min-content 1fr",
     height: "100%",
-  },
-  content: {
-    flexGrow: 1,
   },
   link: {
     color: "black",
@@ -29,7 +26,7 @@ const CopilotsLayout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <div className={classes.container}>
       <CopilotsList />
-      <div className={classes.content}>{children}</div>
+      <div>{children}</div>
     </div>
   );
 };
